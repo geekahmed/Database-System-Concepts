@@ -1,3 +1,4 @@
+
 # Chapter 1. Introduction
 - Database management system (DBMS) is a collection of interrelated data and a set of programs to access those data.
 - Database is a collection of data contains information relevant to an enterprise.
@@ -47,6 +48,27 @@
 - Instance of a database: The collection of information stored in the database at a particular moment.
 - Database schema: The overall design of the database.
 ## Section 4. Database Languages
+- The database system provides two ways to interact with it
+	- Data-definition language (DDL): to specify the database schema
+	- Data-manipulation language (DML):  to express database queries and updates
+- Data-Definition Language is used to specify the storage structure and access methods used by the database system by a set of statements in a special type of DDL called a data storage and definition language.
+- Integrity constraints implemented by the database system
+	- Domain Constraints: a domain of possible values must be associated with every attribute (for example, integer types, character types, date/time types).
+	- Referential Integrity: ensure that a value that appears in one relation for a given set of attributes also appears in a certain set of attributes in another relation.
+	- Authorization: differentiate among the users as far as the type of access they are permitted on various data values in the database.
+		- Read only
+		- Write only
+		- Update only
+		- Combination of the last actions
+- The output of the DDL is placed in the data dictionary, which contains metadata (data about data).
+- A data-manipulation language (DML) is a language that enables users to access or manipulate data as organized by the appropriate data model.
+	- Retrieval of information stored in the database.
+	- Insertion of new information into the database.
+	- Deletion of information from the database.
+	- Modification of information stored in the database.
+- DMLs are categorized into:
+	- Procedural DMLs: require a user to specify what data are needed and how to get those data.
+	- Declarative DMLs: require a user to specify what data are needed without specifying how to get those data.
 ## Section 5. Database Design
 ## Section 6. Database Engine 
 ## Section 7. Database and Application Architecture
