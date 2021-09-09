@@ -96,5 +96,17 @@
 -  Failure recovery process must detect system failures and restore the database to the state that existed prior to the occurrence of the failure.
 -  It is the responsibility of the concurrency-control manager to control the interaction among the concurrent transactions, to ensure the consistency of the database.
 ## Section 7. Database and Application Architecture
+-  Earlier-generation database applications used a two-tier architecture, where the application resides at the client machine, and invokes database system functionality at the server machine through query language statements.
+- Modern database applications use a three-tier architecture, where the client machine acts as merely a front end and does not contain any direct database calls.
 ## Section 8. Database Users and Administrators
-## Section 9. History of Database Systems
+- There are four different types of database-system users
+	- Naive users are unsophisticated users who interact with the system by using predefined user interfaces, such as web or mobile applications.
+	- Application programmers are computer professionals who write application programs.
+	- Sophisticated users interact with the system without writing programs. Instead, they form their requests either using a database query language or by using tools such as data analysis software.
+- Database administrator (DBA) is the person who has the central control of both the data and the programs that access those data.
+- The functions of a DBA include:
+	- Schema definition.
+	- Storage structure and access-method definition.
+	-  Schema and physical-organization modification.
+	- Granting of authorization for data access.
+	- Routine maintenance.
