@@ -1,4 +1,5 @@
 
+
 # Chapter 2. Introduction to the Relational Model - Exercises
 
 ## Practice Exercises
@@ -13,6 +14,23 @@
 	- The attributes day and start time are part of the primary key since a particular class will most likely meet on several different days, and may even meet more than once in a day. However, end time is not part of the primary key since a particular class that starts at a particular time on a particular day cannot end at more than one time.
 - In the instance of instructor shown in Figure 2.1, no two instructors have the same name. From this, can we conclude that name can be used as a superkey (or primary key) of instructor?
 	- No. For this possible instance of the instructor table the names are unique, but in general this may not be always the case (unless the university has a rule that two instructors cannot have the same name, which is a rather unlikey scenario).
+- What is the result of ﬁrst performing the Cartesian product of student and advisor, and then performing a selection operation on the result with the predicate s_id = ID ? (Using the symbolic notation of relational algebra, this query can be written as σ _(s_id=ID) (student × advisor).)
+	- The result will be a relation which contains the data of students with coressponding advisor for each.
+- Consider the employee database of Figure 2.17. Give an expression in the relational algebra to express each of the following queries:
+	- Find the name of each employee who lives in city “Miami”.
+		- Πperson_name (σ_(city="Miami")(employee)
+	- Find the name of each employee whose salary is greater than $100000.
+		- Πperson_name (σ_(salary>100000)(employee ⋈ works)
+	- Find the name of each employee who lives in “Miami” and whose salary is greater than $100000.
+		- Πperson_name (σ_(salary>100000 ^ city="Miami")(employee ⋈ works)
+- Consider the bank database of Figure 2.18. Give an expression in the relational algebra for each of the following queries:
+	- Find the name of each branch located in “Chicago”.
+		- Πbranch_name (σ_(city="Chicago")(branch)
+	- Find the ID of each borrower who has a loan in branch “Downtown”.
+		- Π_ID(σ_(branch_name = "Downtown) (borrower ⋈_(borrower.loan_number = loan.loan_number) loan))
+- Consider the employee database of Figure 2.17. Give an expression in the relational algebra to express each of the following queries:
+	- Find the ID and name of each employee who does not work for “BigBank”.
+	- Find the ID and name of each employee who earns at least as much as every employee in the database.
 
 ## Exercises
 - Describe the diﬀerences in meaning between the terms relation and relation schema.

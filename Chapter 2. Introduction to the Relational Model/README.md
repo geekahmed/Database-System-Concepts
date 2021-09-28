@@ -1,4 +1,5 @@
 
+
 # Chapter 2. Introduction to the Relational Model
 - The relational model remains the primary data model for commercial data-processing applications.
 - The relational model’s independence from any speciﬁc underlying low-level data structures has allowed it to persist despite the advent of new approaches to data storage, including modern column-stores that are designed for large-scale data mining.
@@ -40,4 +41,17 @@
 	- The relational algebra.
 - In a declarative query language, the user describes the desired information without giving a speciﬁc sequence of steps or function calls for obtaining that information.
 	- The tuple relational calculus and domain relational calculus.
-- 
+
+## Section 6. The Relational Algebra
+- The relational algebra consists of a set of operations that take one or two relations as input and produce a new relation as their result.
+- Unary operations like select, project, and rename work only on one relation. While Cartesian product, and set diﬀerence, operate on pairs of relations and are, therefore, called binary operations.
+- In formal relational algebra, duplicates are eliminated.
+- The select operation selects tuples that satisfy a given predicate.
+	- We use the lowercase Greek letter sigma (σ) to denote selection.
+- The project operation is a unary operation that returns its argument relation, with certain attributes left out.
+	- Projection is denoted by the uppercase Greek letter pi (Π).
+- Since the result of a relational-algebra operation is of the same type (relation) as its inputs, relational-algebra operations can be composed together into a relational-algebra expression.
+- The Cartesian-product operation, denoted by a cross (×), allows us to combine information from any two relations.
+- The intersection operation, denoted by ∩, allows us to ﬁnd tuples that are in both the input relations.
+- The set-diﬀerence operation, denoted by −, allows us to ﬁnd tuples that are in one relation but are not in another.
+- The assignment operation, denoted by ←, works like assignment in a programming language.
