@@ -7,7 +7,7 @@ Database management has evolved from a specialized computer application to a cen
 
 <!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
 # Table of Contents
-- [Table of Contents](#table-of-contents)
-- [Chapter 1. Introduction](#)
-- [Chapter 2. Introduction to the Relational Model](#)
+- [Chapter 1. Introduction](https://github.com/geekahmed/Database-System-Concepts/tree/main/Chapter%201.%20Introduction)
+- [Chapter 2. Introduction to the Relational Model](https://github.com/geekahmed/Database-System-Concepts/tree/main/Chapter%202.%20Introduction%20to%20the%20Relational%20Model)
+- [Chapter 3. Introduction to SQL](https://github.com/geekahmed/Database-System-Concepts/tree/main/Chapter%203.%20Introduction%20to%20SQL)
 <!-- /TOC -->
