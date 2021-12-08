@@ -102,4 +102,52 @@
  - A real implementation of SQL would not execute the query in this fashion; it would instead optimize evaluation by generating (as far as possible) only elements of the Cartesian product that satisfy the where clause predicates.
  - When writing queries, you should be careful to include appropriate where clause conditions.
 	 - If you omit the where clause condition in the preceding SQL query, it will output the Cartesian product, which could be a huge relation.
+## Section 4. Additional Basic Operations
+- There several reasons for not doing the convnient way in deriving names of relations and attributes:
+	- Two relations in the from clause may have attributes with the same name, in which case an attribute name is duplicated in the result.
+	- If we use an arithmetic expression in the select clause, the resultant attribute does not have a name.
+	- if an attribute name can be derived from the base relations, we may want to change the attribute name in the result.
+- In order to re-naming an attribute or relation, we can use the **as clause**.
+	- old-name as new-name
+	- The as clause can appear in both the select and from clauses.
+- Reasons of using as clause in renaming:
+	- To rename a relation is to replace a long relation name with a shortened version that is more convenient to use elsewhere in the query.
+	- To rename a relation is a case where we wish to compare tuples in the same relation.
+- An identiﬁer, such as T and S, that is used to rename a relation is referred to as a correlation name in the SQL standard.
+
+	    select distinct T .name
+	    from instructor as T , instructor as S
+	    where T.salary > S.salary and S.dept name = 'Biology';
+
+- The SQL standard speciﬁes that the equality operation on strings is case sensitive.
+- Pattern matching can be performed on strings using the operator like.
+	- Percent (%): The % character matches any substring.
+	- Underscore ( ): The character matches any character.
+- SQL allows the speciﬁcation of an escape character.
+	- The escape character is used immediately before a special pattern character to indicate that the special pattern character is to be treated like a normal character.
+	- We deﬁne the escape character for a like comparison using the escape keyword.
+- SQL allows us to search for mismatches instead of matches by using the not like comparison operator.
+- The asterisk symbol “ * ” can be used in the select clause to denote “all attributes.”
+- A select clause of the form select * indicates that all attributes of the result relation of the from clause are selected.
+- The order by clause causes the tuples in the result of a query to appear in sorted order.
+- To specify the sort order, we may specify desc for descending order or asc for ascending order.
+- Ordering can be performed on multiple attributes.
+- 
+
+    select *
+    from instructor
+    order by salary desc, name asc;
+- SQL includes a between comparison operator to simplify where clauses that specify that a value be less than or equal to some value and greater than or equal to some other value.
+- SQL permits us to use the notation (v1 , v2 , … , vn ) to denote a tuple of arity n containing values v1 , v2 , … , vn ; the notation is called a row constructor.
+- 
+
+    select name, course id
+    from instructor, teaches
+    where instructor.ID= teaches.ID and dept name = 'Biology';
+- **Is equivalent to:**
+- 
+
+    select name, course id
+    from instructor, teaches
+    where (instructor.ID, dept name) = (teaches.ID, 'Biology');
 
