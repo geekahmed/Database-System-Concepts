@@ -64,3 +64,42 @@
 	 - D is the type of the added attribute
  - We can drop attributes from a relation by the command `alter table r drop A;`
  - Many database systems do not support dropping of attributes, although they will allow an entire table to be dropped.
+## Section 3. Basic Structure of SQL Queries
+ - The basic structure of an SQL query consists of three clauses: select, from, and where.
+ - A query takes as its input the relations listed in the from clause, operates on them as speciﬁed in the where and select clauses, and then produces a relation as the result.
+ - In the formal, mathematical deﬁnition of the relational model, a relation is a set.
+	- In practice, duplicate elimination is time-consuming. Therefore, SQL allows duplicates in database relations as well as in the results of SQL expressions.
+	- Any database relation whose schema includes a primary-key declaration cannot contain duplicate tuples, since they would violate the primary-key constraint.
+ - If we want to force the elimination of duplicates, we insert the keyword distinct after select.
+ - SQL allows us to use the keyword all to specify explicitly that duplicates are not removed.
+ - The select clause may also contain arithmetic expressions involving the operators +, −, ∗, and / operating on constants or attributes of tuples.
+ - The where clause allows us to select only those rows in the result relation of the from clause that satisfy a speciﬁed predicate.
+ - SQL allows the use of the logical connectives and, or, and not in the where clause.
+	- The operands of the logical connectives can be expressions involving the comparison operators <, <=, >, >=, =, and <>.
+ - In SQL, we list the relations that need to be accessed in the from clause and specify the matching condition in the where clause.
+ - The relation name is used as a preﬁx to make clear to which attribute we are referring.
+ - The select clause is used to list the attributes desired in the result of a query.
+ - The from clause is a list of the relations to be accessed in the evaluation of the query.
+ - The where clause is a predicate involving attributes of the relation in the from clause.
+ - A typical SQL query has the form:
+ - 
+
+    select A1 , A2 , … , An
+    from r1 , r2 , … , rm
+    where P;
+
+ - Ai represents an attribute
+ - ri a relation. 
+ - P is a predicate.
+	 - If the where clause is omitted, the predicate P is true.
+ - The from clause by itself deﬁnes a Cartesian product of the relations listed in the clause.
+ - The predicate in the where clause is used to restrict the combinations created by the Cartesian product to those that are meaningful for the desired answer.
+ - In general, the meaning of an SQL query can be understood as follows:
+	 - 1. Generate a Cartesian product of the relations listed in the from clause.
+	 - 2. Apply the predicates speciﬁed in the where clause on the result of Step 1.
+	 - 3. For each tuple in the result of Step 2, output the attributes (or results of expressions) speciﬁed in the select clause.
+ - This sequence of steps helps make clear what the result of an SQL query should be, not how it should be executed.
+ - A real implementation of SQL would not execute the query in this fashion; it would instead optimize evaluation by generating (as far as possible) only elements of the Cartesian product that satisfy the where clause predicates.
+ - When writing queries, you should be careful to include appropriate where clause conditions.
+	 - If you omit the where clause condition in the preceding SQL query, it will output the Cartesian product, which could be a huge relation.
+
