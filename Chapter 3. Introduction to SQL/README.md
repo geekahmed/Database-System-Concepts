@@ -167,3 +167,17 @@ union all
 - The except operation outputs all tuples from its first input that do not occur in the second input.
 - The number of duplicates tuples in the result is equal to the number of duplicate copies in c1 minus the number of duplicate copies in c2, provided that the difference is positive.
 	- Thus, if four sections of ECE-101 were taught in the Fall 2017 semester and two sections of ECE-101 were taught in Spring 2018, then there are two tuples with ECE-101 in the result. If, however, there were two or fewer sections of ECE-101 in the Fall 2017 semester and two sections of ECE-101 in the Spring 2018 semester, there is no tuple with ECE-101 in the result.
+## Section 6. Null Values
+- **Null values** present special problems in relational operations, including arithmetic operations, comparison operations, and set operations.
+	- The result of an arithmetic expression (involving, for example, +, −, ∗, or ∕) is null if any of the input values is null.
+- SQL therefore treats as unknown the result of any comparison involving a null value.
+	- This creates a third logical value in addition to true and false.
+- The definitions of the Boolean operations are extended to deal with the value unknown.
+	- and: The result of true and unknown is unknown, false and unknown is false, while unknown and unknown is unknown.
+	- or: The result of true or unknown is true, false or unknown is unknown, while unknown or unknown is unknown.
+	- not: The result of not unknown is unknown.
+- If the where clause predicate evaluates to either false or unknown for a tuple, that tuple is not added to the result.
+- SQL uses the special keyword null in a predicate to test for a null value.
+- SQL allows us to test whether the result of a comparison is unknown, rather than true or false, by using the clauses is unknown and is not unknown.
+- When a query uses the select distinct clause, duplicate tuples must be eliminated.
+	- when comparing values of corresponding attributes from two tuples, the values are treated as identical if either both are non-null and equal in value, or both are null. 
