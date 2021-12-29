@@ -1,3 +1,4 @@
+
 # Chapter 3. Introduction to SQL
 ## Section 1. Overview of the SQL Query Language
  - IBM developed the original version of SQL, originally called Sequel, as part of the System R project in the early 1970s.
@@ -103,7 +104,7 @@
  - When writing queries, you should be careful to include appropriate where clause conditions.
 	 - If you omit the where clause condition in the preceding SQL query, it will output the Cartesian product, which could be a huge relation.
 ## Section 4. Additional Basic Operations
-- There several reasons for not doing the convnient way in deriving names of relations and attributes:
+- There several reasons for not doing the convenient way in deriving names of relations and attributes:
 	- Two relations in the from clause may have attributes with the same name, in which case an attribute name is duplicated in the result.
 	- If we use an arithmetic expression in the select clause, the resultant attribute does not have a name.
 	- if an attribute name can be derived from the base relations, we may want to change the attribute name in the result.
@@ -150,4 +151,19 @@
     select name, course id
     from instructor, teaches
     where (instructor.ID, dept name) = (teaches.ID, 'Biology');
-
+## Section 5. Set Operations
+- The SQL operations union, intersect, and except operate on relations and correspond to the mathematical set operations ∪, \cap, and -.
+- The union operation automatically eliminates duplicates, unlike the select clause.
+`select course_id from section where semester='Fall' and year=2017
+union
+(select course_id from section where semester = 'Spring' and year = 2018);`
+- To retain all duplicates, we should write union all instead of union.
+`select course_id from section where semester='Fall' and year=2017
+union all
+(select course_id from section where semester = 'Spring' and year = 2018);`
+- The number of duplicates tuples in the result is equal to the **total** number of duplicates that appear in both tables.
+- Like union, intersect automatically eliminates duplicates and intersect all retain them.
+- The number of duplicates tuples in the result is equal to the **minimum** number of duplicates that appear in both tables.
+- The except operation outputs all tuples from its first input that do not occur in the second input.
+- The number of duplicates tuples in the result is equal to the number of duplicate copies in c1 minus the number of duplicate copies in c2, provided that the difference is positive.
+	- Thus, if four sections of ECE-101 were taught in the Fall 2017 semester and two sections of ECE-101 were taught in Spring 2018, then there are two tuples with ECE-101 in the result. If, however, there were two or fewer sections of ECE-101 in the Fall 2017 semester and two sections of ECE-101 in the Spring 2018 semester, there is no tuple with ECE-101 in the result.
