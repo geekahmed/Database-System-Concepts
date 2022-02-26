@@ -180,4 +180,31 @@ union all
 - SQL uses the special keyword null in a predicate to test for a null value.
 - SQL allows us to test whether the result of a comparison is unknown, rather than true or false, by using the clauses is unknown and is not unknown.
 - When a query uses the select distinct clause, duplicate tuples must be eliminated.
-	- when comparing values of corresponding attributes from two tuples, the values are treated as identical if either both are non-null and equal in value, or both are null. 
+	- when comparing values of corresponding attributes from two tuples, the values are treated as identical if either both are non-null and equal in value, or both are null.
+## Section 7. Aggregate Functions
+- Aggregate functions are functions that take a collection (a set or multiset) of values as input and return a single value.
+	- Average: avg .. collection of numbers
+	- Minimum: min
+	- Maximum: max
+	- Total: sum .. collection of numbers
+	- Count: count
+- Retaining duplicates is important in computing an average.
+- If we do want to eliminate duplicates, we use the keyword distinct in the aggregate expression.
+- The notation for counting all tuples function in SQL is count (*).
+- SQL does not allow the use of distinct with count (*).
+- The attribute or attributes given in the group by clause are used to form groups.
+- Tuples with the same value on all attributes in the group by clause are placed in one group.
+- When an SQL query uses grouping, it is important to ensure that the only attributes that appear in the select statement without being aggregated are those that are present in the group by clause.
+- Acomment written in SQL by enclosing text in “/* */”.
+- . SQL applies predicates in the having clause after groups have been formed, so aggregate functions may be used in the having clause.
+- As was the case for the select clause, any attribute that is present in the having clause without being aggregated must appear in the group by clause, otherwise the query is erroneous.
+- The meaning of a query containing aggregation, group by, or having clauses is defined by the following sequence of operations:
+	- As was the case for queries without aggregation, the from clause is first evaluated to get a relation.
+	- If a where clause is present, the predicate in the where clause is applied on the result relation of the from clause.
+	- Tuples satisfying the where predicate are then placed into groups by the group by clause if it is present. If the group by clause is absent, the entire set of tuples satisfying the where predicate is treated as being in one group.
+	- The having clause, if it is present, is applied to each group; the groups that do not satisfy the having clause predicate are removed.
+	- The select clause uses the remaining groups to generate tuples of the result of the query, applying the aggregate functions to get a single result tuple for each group.
+- All aggregate functions except count (*) ignore null values in their input collection.
+	- As a result of null values being ignored, the collection of values may be empty.
+- The count of an empty collection is defined to be 0, and all other aggregate operations return a value of null when applied on an empty collection.
+- A Boolean data type that can take values true, false, and unknown was introduced in SQL:1999. The aggregate functions some and every can be applied on a collection of Boolean values, and compute the disjunction (or) and conjunction (and), respectively, of the values.
